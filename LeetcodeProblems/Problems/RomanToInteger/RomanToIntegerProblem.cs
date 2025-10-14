@@ -17,10 +17,10 @@ namespace LeetCodeTest.Problems
 
             var convertedInt = 0;
 
-            for (var i = 0; i < romanNumber.Count(); i++)
+            for (var i = 0; i < romanNumber.Length; i++)
             {
                 var romanValue = romanDictionary[romanNumber[i].ToString()];
-                if (i + 1 < romanNumber.Count() && romanValue < romanDictionary[romanNumber[i + 1].ToString()])
+                if (i + 1 < romanNumber.Length && romanValue < romanDictionary[romanNumber[i + 1].ToString()])
                 {
                     convertedInt -= romanValue;
                 }
