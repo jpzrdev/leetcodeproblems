@@ -4,15 +4,18 @@ namespace LeetCodeTest.Problems
     {
         public static int[] Solve(int[] nums, int target)
         {
-            for (var i = 0; i < nums.Count(); i++)
+            var dictionary = new Dictionary<int, int>
             {
-                for (var j = i + 1; j < nums.Count(); j++)
+                {target - nums[0], 0}
+            };
+
+            for (var i = 1; i < nums.Length; i++)
+            {
+                if (dictionary.TryGetValue(nums[i], out int value))
                 {
-                    if (nums[i] + nums[j] == target)
-                    {
-                        return [i, j];
-                    }
+                    return [value, i];
                 }
+                dictionary.Add(target - nums[i], i);
             }
 
             throw new Exception("No solution found");
